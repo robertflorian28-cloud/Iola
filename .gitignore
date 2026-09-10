@@ -1,0 +1,10 @@
+node_modules/
+.next/
+.next-dev/
+.pnpm-store/
+*.tsbuildinfo
+.codex-*.log
+.codex-*.pid
+.artifacts/
+.env*
+!.env.example
