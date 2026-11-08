@@ -1,7 +1,7 @@
 export const contact = {
   email: "iola.conceptos@gmail.com",
-  whatsapp: "40773767202",
-  phoneDisplay: "40773767202",
+  whatsapp: "40774930211",
+  phoneDisplay: "+40774930211",
   whatsappMessage:
     "Bună! Am descoperit IOLA și aș vrea să discutăm despre un proiect de arhitectură sau design interior.",
 };
@@ -22,7 +22,7 @@ export const irinaProfile: TeamMember = {
   name: "Irina",
   role: "Urbanist și designer de interior la IOLA.",
   description: "",
-  image: "/assets/irina-urbanist-designer-interior.jpeg",
+  image: "/assets/irinav2.jpeg",
   alt: "Irina, urbanist și designer de interior în echipa IOLA",
   specialties: [
     {
@@ -38,26 +38,32 @@ export const irinaProfile: TeamMember = {
 
 export const services = [
   {
+    slug: "arhitectura",
     title: "Arhitectură",
     text: "Concepte pentru case, clădiri și spații comerciale, fațade, compartimentări, documentații și coordonare tehnică.",
   },
   {
+    slug: "design-interior",
     title: "Design interior",
     text: "Direcție estetică, stil, paletă cromatică, materiale, mobilier, iluminat, finisaje și decor, într-un concept coerent.",
   },
   {
+    slug: "planuri-tehnice",
     title: "Planuri tehnice",
     text: "Mobilare, demolări, construire, pardoseli, tavane, electrice, iluminat, prize, sanitare și detalii pentru mobilier custom.",
   },
   {
+    slug: "randari-3d",
     title: "Randări 3D",
     text: "Imagini fotorealiste care fac spațiul ușor de înțeles și permit decizii clare înainte de începerea execuției.",
   },
   {
+    slug: "materiale-si-produse",
     title: "Materiale și produse",
     text: "Selecții potrivite proiectului: piatră, parchet, ceramică, corpuri de iluminat, mobilier, sanitare și textile.",
   },
   {
+    slug: "buget-si-mobilier",
     title: "Buget și mobilier custom",
     text: "Liste de achiziții, estimări și proiectare de bucătării, dressinguri, recepții, baruri și piese integrate.",
   },
@@ -66,8 +72,10 @@ export const services = [
 export const projects = [
   {
     title: "Amenajare rezidențială",
+    seoTitle: "Amenajare rezidențială de living și dining",
     slug: "amenajare-rezidentiala",
     type: "Interior rezidențial",
+    description: "Amenajare de living și dining în tonuri naturale, cu lemn, piatră și mobilier cu forme organice. Un fotoliu verde aduce culoare, iar canapeaua curbată și masa joasă din piatră definesc zona de relaxare.",
     image: "/assets/amenajare-rezidentiala/fotoliu-organic.png",
     alt: "Fotoliu organic într-un living în tonuri naturale",
     images: [
@@ -95,8 +103,10 @@ export const projects = [
   },
   {
     title: "Design interior",
+    seoTitle: "Design interior în verde și teracotă",
     slug: "design-interior",
     type: "Concept cromatic și material",
+    description: "Concept de design interior în verde și teracotă, urmărit din dining până în dormitor. Moodboardul reunește textile ivoire, lemn închis și corpuri de iluminat care dau coerență celor două spații.",
     image: "/assets/design-interior/dining-verde-teracota.png",
     alt: "Dining verde cu mobilier teracotă și corpuri de iluminat din sticlă",
     images: [
@@ -129,8 +139,10 @@ export const projects = [
   },
   {
     title: "Momente împreună",
+    seoTitle: "Momente împreună · Living la malul mării",
     slug: "momente-impreuna",
     type: "Living la malul mării",
+    description: "Concept de living și bucătărie deschisă, orientate către priveliștea panoramică a mării. Canapeaua deschisă, perdelele ușoare și măsuțele rotunde lasă lumina apusului să pună în valoare spațiul.",
     image: "/assets/momente-impreuna/living-panoramic.png",
     alt: "Living panoramic la apus cu vedere spre mare",
     images: [
@@ -153,8 +165,10 @@ export const projects = [
   },
   {
     title: "Retail & HoReCa",
+    seoTitle: "Design interior pentru retail și HoReCa",
     slug: "retail-horeca",
     type: "Spații comerciale construite în jurul brandului, fluxului și experienței clientului.",
+    description: "Concepte de design interior pentru cafenele, restaurante și spații comerciale. Galeria arată cum vitrinele, barul, iluminatul și așezarea meselor definesc experiențe diferite pentru clienți.",
     image: "/assets/retail-horeca/horeca1.jpeg",
     alt: "Spațiu comercial luminos cu vitrine pentru patiserie, cafea și produse pescărești",
     images: [

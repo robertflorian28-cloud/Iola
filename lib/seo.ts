@@ -10,23 +10,31 @@ if (!["https:", "http:"].includes(configuredUrl.protocol)) {
 
 export const siteUrl = configuredUrl.origin;
 export const siteName = "IOLA Concept";
+export const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 export const homeTitle = "Arhitectură și design interior | IOLA Concept";
 export const homeDescription =
-  "IOLA Concept: arhitectură și design interior pentru locuințe și spații comerciale. Concepte, planuri tehnice, randări 3D și mobilier la comandă.";
+  "Studio de arhitectură și design interior pentru locuințe, retail și HoReCa. Descoperă portofoliul IOLA și serviciile de proiectare, randare 3D și mobilier la comandă.";
 
 export function absoluteUrl(path: string) {
   return new URL(path, `${siteUrl}/`).toString();
 }
 
-export function pageMetadata(title: string, description: string, path: string): Metadata {
+export function pageMetadata(
+  title: string,
+  description: string,
+  path: string,
+  image?: { src: string; alt: string },
+): Metadata {
   const url = absoluteUrl(path);
-  const images = [{
-    url: absoluteUrl("/social-image"),
-    width: 1200,
-    height: 630,
-    alt: "IOLA Concept — arhitectură și design interior",
-    type: "image/png",
-  }];
+  const images = image
+    ? [{ url: absoluteUrl(image.src), alt: image.alt }]
+    : [{
+        url: absoluteUrl("/social-image"),
+        width: 1200,
+        height: 630,
+        alt: "IOLA Concept — arhitectură și design interior",
+        type: "image/png",
+      }];
 
   return {
     title,
@@ -66,12 +74,14 @@ export const homeStructuredData = {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Servicii de arhitectură și design interior",
-        url: absoluteUrl("/#servicii"),
+        url: absoluteUrl("/servicii"),
         itemListElement: services.map((service) => ({
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
             name: service.title,
+            description: service.text,
+            url: absoluteUrl(`/servicii#${service.slug}`),
             provider: { "@id": absoluteUrl("/#organization") },
           },
         })),

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { ContactDock } from "@/components/ContactDock";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { ContactDock } from "@/components/layout/ContactDock";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 
 type LegalPageProps = {
   title: string;

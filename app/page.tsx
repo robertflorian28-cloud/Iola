@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { ContactDock } from "@/components/ContactDock";
-import { ExperienceCarousel } from "@/components/ExperienceCarousel";
-import { Footer } from "@/components/Footer";
-import { GlassmorphismCta } from "@/components/GlassmorphismCta";
-import { Header } from "@/components/Header";
-import { ProjectAccordion } from "@/components/ProjectAccordion";
-import { StudioPortrait } from "@/components/StudioPortrait";
-import { WordScrub } from "@/components/WordScrub";
+import { ContactDock } from "@/components/layout/ContactDock";
+import { ExperienceCarousel } from "@/components/home/ExperienceCarousel";
+import { Footer } from "@/components/layout/Footer";
+import { GlassmorphismCta } from "@/components/ui/GlassmorphismCta";
+import { Header } from "@/components/layout/Header";
+import { ProjectAccordion } from "@/components/home/ProjectAccordion";
+import { StudioPortrait } from "@/components/home/StudioPortrait";
+import { WordScrub } from "@/components/home/WordScrub";
 import { contact, irinaProfile, services } from "@/lib/site-data";
 import { homeDescription, homeStructuredData, homeTitle, pageMetadata } from "@/lib/seo";
 
@@ -76,6 +76,7 @@ export default function Home() {
         <div className="chapter-heading">
           <h2 id="services-title">Servicii de arhitectură și design interior.</h2>
           <p>Fără rupturi între imaginea pe care o aprobi și informația care ajunge în șantier.</p>
+          <a className="detail-link" href="/servicii">Vezi serviciile și ce includ</a>
         </div>
         <div className="services-bento">
           {serviceGroups.map((group) => (

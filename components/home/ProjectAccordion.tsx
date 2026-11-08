@@ -1,9 +1,8 @@
 "use client";
 
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
-import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
-import Image, { getImageProps } from "next/image";
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useRef, useState } from "react";
 import { projects } from "@/lib/site-data";
 
 type Project = (typeof projects)[number];
@@ -15,27 +14,8 @@ function SwipeProject({ project }: { project: Project }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const pointerStart = useRef<{ x: number; y: number } | null>(null);
-  const root = useRef<HTMLElement>(null);
-  const isNearViewport = useInView(root, { margin: "200px 0px", once: true });
-  const reduceMotion = useReducedMotion();
   const activeImage = project.images[activeIndex];
   const hasImages = project.images.length > 0;
-
-  useEffect(() => {
-    if (!isNearViewport || project.images.length < 2) return;
-    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-    if (connection?.saveData) return;
-
-    // Warm only the next slide, after this gallery approaches the viewport.
-    const nextImage = project.images[(activeIndex + 1) % project.images.length];
-    const { props } = getImageProps({ src: nextImage.src, alt: "", fill: true, sizes: imageSizes });
-    const preload = new window.Image();
-    preload.decoding = "async";
-    preload.fetchPriority = "low";
-    preload.sizes = props.sizes ?? "";
-    preload.srcset = props.srcSet ?? "";
-    preload.src = props.src;
-  }, [activeIndex, isNearViewport, project.images]);
 
   function changeImage(step: 1 | -1) {
     if (project.images.length < 2) return;
@@ -44,7 +24,7 @@ function SwipeProject({ project }: { project: Project }) {
   }
 
   function handlePointerDown(event: React.PointerEvent<HTMLDivElement>) {
-    if (!event.isPrimary || event.button !== 0 || (event.target as HTMLElement).closest("button")) return;
+    if (!event.isPrimary || event.button !== 0 || (event.target as HTMLElement).closest("button, a")) return;
     pointerStart.current = { x: event.clientX, y: event.clientY };
   }
 
@@ -71,14 +51,10 @@ function SwipeProject({ project }: { project: Project }) {
     }
   }
 
-  const transition = reduceMotion
-    ? { duration: 0 }
-    : { duration: 0.42, ease: [0.16, 1, 0.3, 1] as const };
-
   return (
     <article
-      ref={root}
       className={`accordion-project${hasImages ? "" : " is-placeholder"}`}
+      data-direction={direction === 1 ? "next" : "previous"}
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onPointerDown={handlePointerDown}
@@ -95,24 +71,21 @@ function SwipeProject({ project }: { project: Project }) {
         aria-label={activeImage?.alt ?? project.alt}
       >
         {activeImage ? (
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              className="accordion-project-slide"
-              key={activeImage.src}
-              initial={reduceMotion ? false : { opacity: 0, x: direction * 42 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: direction * -42 }}
-              transition={transition}
+          project.images.map((image, index) => (
+            <div
+              aria-hidden={index !== activeIndex}
+              className={`accordion-project-slide${index === activeIndex ? " is-active" : ""}`}
+              key={image.src}
             >
               <Image
-                src={activeImage.src}
-                alt={activeImage.alt}
+                src={image.src}
+                alt={index === activeIndex ? image.alt : ""}
                 fill
                 draggable={false}
                 sizes={imageSizes}
               />
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          ))
         ) : (
           <div className="accordion-project-placeholder">
             <p>Imagini în pregătire</p>
@@ -121,7 +94,7 @@ function SwipeProject({ project }: { project: Project }) {
       </div>
       <div className="accordion-project-wash" />
       <div className="accordion-project-copy">
-        <h3>{project.title}</h3>
+        <h3><a className="detail-link" href={`/proiecte/${project.slug}`}>{project.title}</a></h3>
         <p>{project.type}</p>
       </div>
       <p className="visually-hidden" role="status" aria-atomic="true">

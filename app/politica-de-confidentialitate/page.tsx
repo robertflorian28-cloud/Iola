@@ -1,5 +1,5 @@
 import { pageMetadata } from "@/lib/seo";
-import { LegalPage } from "@/components/LegalPage";
+import { LegalPage } from "@/components/pages/LegalPage";
 import { contact } from "@/lib/site-data";
 
 export const metadata = pageMetadata(

@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
-import { homeDescription, homeTitle, siteName, siteUrl } from "@/lib/seo";
+import {
+  googleSiteVerification,
+  homeDescription,
+  homeTitle,
+  siteName,
+  siteUrl,
+} from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,6 +25,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  ...(googleSiteVerification
+    ? { verification: { google: googleSiteVerification } }
+    : {}),
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
