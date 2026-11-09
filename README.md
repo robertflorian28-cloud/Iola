@@ -53,7 +53,7 @@ La adăugarea unui proiect în `lib/site-data.ts`, pagina lui este generată la 
 
 | Variabilă | Rol |
 | --- | --- |
-| `SITE_URL` | Adresa publică finală, cu HTTPS. Valoarea implicită este `https://iola.ro`. Seteaz-o înainte de build dacă publici pe alt domeniu. |
+| `SITE_URL` | Adresa publică finală, cu HTTPS. Valoarea implicită este `https://www.iola-arhitecture.com`. Seteaz-o înainte de build dacă publici pe alt domeniu. |
 | `GOOGLE_SITE_VERIFICATION` | Cod opțional pentru verificarea proprietății în Google Search Console. |
 
 După publicare, verifică `/robots.txt` și `/sitemap.xml` pe domeniul final. Pentru validarea locală, rulează `pnpm build` și verifică navigarea, galeriile și linkurile de contact la lățimi de 390, 768 și 1440 px.

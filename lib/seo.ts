@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { contact, services } from "@/lib/site-data";
 
 // Set SITE_URL at build time when the public domain changes.
-const configuredUrl = new URL(process.env.SITE_URL || "https://iola.ro");
+const configuredUrl = new URL(process.env.SITE_URL || "https://www.iola-arhitecture.com");
 
 if (!["https:", "http:"].includes(configuredUrl.protocol)) {
   throw new Error("SITE_URL must be an absolute HTTP or HTTPS URL.");
