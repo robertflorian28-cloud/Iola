@@ -169,14 +169,9 @@ export const projects = [
     slug: "retail-horeca",
     type: "Spații comerciale construite în jurul brandului, fluxului și experienței clientului.",
     description: "Concepte de design interior pentru cafenele, restaurante și spații comerciale. Galeria arată cum vitrinele, barul, iluminatul și așezarea meselor definesc experiențe diferite pentru clienți.",
-    image: "/assets/retail-horeca/horeca1.jpeg",
-    alt: "Spațiu comercial luminos cu vitrine pentru patiserie, cafea și produse pescărești",
+    image: "/assets/retail-horeca/horeca.jpeg",
+    alt: "Cafenea albă cu tavan organic, bar curbat și mese așezate lângă ferestre",
     images: [
-      {
-        title: "Concept comercial multifuncțional",
-        src: "/assets/retail-horeca/horeca1.jpeg",
-        alt: "Spațiu comercial luminos cu vitrine pentru patiserie, cafea și produse pescărești",
-      },
       {
         title: "Cafenea luminoasă",
         src: "/assets/retail-horeca/horeca.jpeg",
@@ -186,11 +181,6 @@ export const projects = [
         title: "Restaurant cu lumină geometrică",
         src: "/assets/retail-horeca/horeca3.jpeg",
         alt: "Restaurant în tonuri închise cu corpuri de iluminat geometrice și bar metalic",
-      },
-      {
-        title: "Spațiu comercial contemporan",
-        src: "/assets/retail-horeca/horeca4.jpeg",
-        alt: "Spațiu comercial contemporan cu mobilier negru și iluminat liniar integrat",
       },
     ],
   },
